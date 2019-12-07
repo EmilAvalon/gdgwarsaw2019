@@ -32,13 +32,13 @@ def run_quickstart():
 
     # Instantiates a client
     # [START vision_python_migration_client]
-    key_file = os.path.expanduser('~/key.json')
+    key_file = os.path.expanduser('~/gdgwarsaw2019/key.json')
     credentials = service_account.Credentials.from_service_account_file(key_file)
     client = vision.ImageAnnotatorClient(credentials=credentials)
     # [END vision_python_migration_client]
 
     # The name of the image file to annotate
-    file_names = ['~/cat.jpg', '~/dog.jpg']
+    file_names = ['~/gdgwarsaw2019/vision/cat.jpg', '~/gdgwarsaw2019/vision/dog.jpg']
 
     # Loads the image into memory
     for file_name in file_names:
