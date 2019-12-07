@@ -9,6 +9,7 @@ gcloud services enable storage-api.googleapis.com --project $PROJECT_ID
 gcloud iam service-accounts create service-account-amutoml --project $PROJECT_ID
 gcloud projects add-iam-policy-binding $PROJECT_ID --member="serviceAccount:service-account-amutoml@$PROJECT_ID.iam.gserviceaccount.com" --role="roles/automl.editor"
 gcloud projects add-iam-policy-binding $PROJECT_ID --member="serviceAccount:service-account-amutoml@$PROJECT_ID.iam.gserviceaccount.com" --role="roles/storage.admin"
+gcloud iam service-accounts keys create ~/gdgwarsaw2019/key.json   --iam-account service-account-amutoml@$PROJECT_ID.iam.gserviceaccount.com
 export BUCKET=$PROJECT_ID-vcm
 gsutil mb -p $PROJECT_ID -c regional -l us-central1 gs://$BUCKET/
 gsutil -m cp gs://avalon-platform-demo-automl/*.jpg gs://$BUCKET/
@@ -20,3 +21,6 @@ gsutil mb -p $PROJECT_ID -c regional -l us-central1 gs://$BUCKET/
 gsutil cp gs://avalon-platform-demo-automl/bank-marketing.csv gs://$BUCKET/
 bq --location=US mk -d $PROJECT_ID:automldemo
 bq load --source_format=CSV --autodetect $PROJECT_ID:automldemo.bankmarketing gs://$BUCKET/bank-marketing.csv
+gsutil cp gs://avalon-platform-demo-automl/dog.1629.jpg ~/gdgwarsaw2019/vision/dog.jpg
+gsutil cp gs://avalon-platform-demo-automl/cat.102.jpg ~/gdgwarsaw2019/vision/cat.jpg
+
