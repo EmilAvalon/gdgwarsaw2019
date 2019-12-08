@@ -1,0 +1,8 @@
+# secret key
+key.json
+
+# python things
+**/*.pyc
+
+# training files
+vision/
